@@ -1,33 +1,32 @@
 <!doctype html>
+<html lang="es">
 <head>
-<head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Mi primer sitio Web con PaaS</title>
-  <style>
-    :root{--bg:#f7fafc;--card:#ffffff;--accent:#0b5fff;--muted:#6b7280}
-    html,body{height:100%;margin:0;font-family:Inter, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;}
-    body{display:flex;align-items:center;justify-content:center;background:linear-gradient(180deg,#eef2ff, var(--bg));padding:2rem;}
-    .container{max-width:900px;background:var(--card);border-radius:12px;box-shadow:0 8px 30px rgba(15,23,42,0.08);padding:3rem;text-align:center;}
-    h1{margin:0;font-size:2.25rem;color:var(--accent);line-height:1.05;}
-    h2{margin:.5rem 0 1.25rem;font-size:1.05rem;color:var(--muted);font-weight:600;}
-    p{color:#111827;font-size:1rem;margin:0 auto;max-width:68ch;line-height:1.6;}
-    footer{margin-top:1.5rem;color:var(--muted);font-size:0.9rem;}
-    .badge{display:inline-block;background:#eef2ff;color:var(--accent);padding:.25rem .5rem;border-radius:999px;font-weight:600;margin-top:.75rem;}
-  </style>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Mi primer sitio Web con PaaS</title>
+<style>
+:root{--bg:#f7fafc;--card:#ffffff;--accent:#0b5fff;--muted:#6b7280}
+html,body{height:100%;margin:0;font-family:Inter, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;}
+body{background:linear-gradient(180deg,#eef2ff, var(--bg));padding:2rem;}
+.container{max-width:900px;background:var(--card);border-radius:12px;box-shadow:0 8px 30px rgba(15,23,42,0.08);padding:2rem 3rem;margin:1.5rem auto;}
+h1{margin:0;font-size:2.25rem;color:var(--accent);line-height:1.05;text-align:center;}
+h2{margin:.5rem 0 1.25rem;font-size:1.1rem;color:var(--accent);font-weight:700;}
+p, li{color:#111827;font-size:1rem;line-height:1.6;}
+ul, ol{padding-left:1.2rem;}
+footer{text-align:center;margin-top:1.5rem;color:var(--muted);font-size:0.9rem;}
+.badge{display:inline-block;background:#eef2ff;color:var(--accent);padding:.25rem .5rem;border-radius:999px;font-weight:600;margin:auto;margin-bottom:.75rem;}
+.card{background:var(--card);padding:1.5rem;margin-top:1rem;border-radius:10px;box-shadow:0 4px 18px rgba(15,23,42,0.05);}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:1rem;margin-top:1rem;}
+</style>
 </head>
 <body>
-<header>
-<div class="container">
-<div style="display:flex;align-items:center;gap:12px">
+
+
+<div class="container" style="text-align:center;">
 <div class="badge">PaaS</div>
-<div>
 <h1>PaaS — Platform as a Service</h1>
 <p class="lead">Una explicación breve y clara sobre qué es PaaS y cuándo usarlo.</p>
 </div>
-</div>
-</div>
-</header>
 
 
 <main class="container">
@@ -79,7 +78,7 @@
 
 <section class="card">
 <h2>Plataformas conocidas</h2>
-<p class="lead">(Algunos ejemplos populares)</p>
+<p>(Algunos ejemplos populares)</p>
 <ul>
 <li>Heroku</li>
 <li>Google App Engine</li>
@@ -111,7 +110,9 @@
 
 
 <footer>
-Página sencilla creada para explicar <strong>PaaS</strong>. ¿Quieres que añada un logo, más ejemplos o traduzca a inglés?
+Página sencilla creada para explicar <strong>PaaS</strong>.
 </footer>
+
+
 </body>
 </html>
