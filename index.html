@@ -1,35 +1,110 @@
 <!doctype html>
-<html lang="es">
-<head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Mi primer sitio Web con PaaS</title>
-  <style>
-    :root{--bg:#f7fafc;--card:#ffffff;--accent:#0b5fff;--muted:#6b7280}
-    html,body{height:100%;margin:0;font-family:Inter, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;}
-    body{display:flex;align-items:center;justify-content:center;background:linear-gradient(180deg,#eef2ff, var(--bg));padding:2rem;}
-    .container{max-width:900px;background:var(--card);border-radius:12px;box-shadow:0 8px 30px rgba(15,23,42,0.08);padding:3rem;text-align:center;}
-    h1{margin:0;font-size:2.25rem;color:var(--accent);line-height:1.05;}
-    h2{margin:.5rem 0 1.25rem;font-size:1.05rem;color:var(--muted);font-weight:600;}
-    p{color:#111827;font-size:1rem;margin:0 auto;max-width:68ch;line-height:1.6;}
-    footer{margin-top:1.5rem;color:var(--muted);font-size:0.9rem;}
-    .badge{display:inline-block;background:#eef2ff;color:var(--accent);padding:.25rem .5rem;border-radius:999px;font-weight:600;margin-top:.75rem;}
-  </style>
+p.lead{color:var(--muted);margin:0 0 18px}
+.card{background:var(--card);border-radius:12px;padding:18px;box-shadow:0 6px 18px rgba(14,30,50,0.06);margin-bottom:14px}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:12px;margin-top:12px}
+ul{margin:8px 0 0 18px}
+footer{color:var(--muted);text-align:center;padding:18px 10px;font-size:0.9rem}
+.badge{display:inline-block;padding:6px 10px;border-radius:999px;background:rgba(43,140,255,0.12);color:var(--accent);font-weight:600;font-size:0.85rem}
+code{background:#f1f5f9;padding:2px 6px;border-radius:6px;font-family:ui-monospace,SFMono-Regular,Menlo,monospace}
+@media (prefers-color-scheme:dark){body{background:#071127;color:#e6eef8} .card{background:linear-gradient(180deg,rgba(255,255,255,0.02),rgba(255,255,255,0.01))}}
+</style>
 </head>
 <body>
-  <main class="container" role="main" aria-labelledby="main-title">
-u    <h1 id="main-title">Mi primer sitio Web con PaaS Jeaqueline</h1>
-    <h2>Maestría en Inteligencia Artificial, Machine Learning y Data Science</h2>
-    <div class="badge">Demostración práctica: GitHub + Vercel</div>
-    <p>
-      Bienvenido al portal de demostración donde exploramos el uso de plataformas <strong>PaaS (Platform as a Service)</strong>
-      para el despliegue rápido de aplicaciones web y prototipos en proyectos de Inteligencia Artificial,
-      Machine Learning y Data Science. En este sitio se muestra cómo un repositorio en GitHub puede integrarse
-      con Vercel para publicar contenido estático de forma automática y sin gestionar servidores.
-    </p>
-    <footer>
-      Actividad práctica — Maestría en Inteligencia Artificial, Machine Learning y Data Science
-    </footer>
-  </main>
+<header>
+<div class="container">
+<div style="display:flex;align-items:center;gap:12px">
+<div class="badge">PaaS</div>
+<div>
+<h1>PaaS — Platform as a Service</h1>
+<p class="lead">Una explicación breve y clara sobre qué es PaaS y cuándo usarlo.</p>
+</div>
+</div>
+</div>
+</header>
+
+
+<main class="container">
+<section class="card">
+<h2>¿Qué es PaaS?</h2>
+<p>PaaS (Platform as a Service) es un modelo de computación en la nube que proporciona una plataforma completa —incluyendo infraestructura, sistema operativo, entorno de ejecución y herramientas— para desarrollar, desplegar y administrar aplicaciones sin preocuparse por la gestión del hardware o la configuración de bajo nivel.</p>
+</section>
+
+
+<section class="card">
+<h2>Características principales</h2>
+<div class="grid">
+<div>
+<h3>Entorno gestionado</h3>
+<p>La plataforma se encarga del sistema operativo, servidores y escalado.</p>
+</div>
+<div>
+<h3>Herramientas integradas</h3>
+<p>IDE en la nube, integración continua, bases de datos y monitorización.</p>
+</div>
+<div>
+<h3>Escalabilidad</h3>
+<p>Permite escalar la aplicación vertical u horizontalmente con menos configuración manual.</p>
+</div>
+</div>
+</section>
+
+
+<section class="card">
+<h2>Ventajas</h2>
+<ul>
+<li>Ahorro de tiempo: los desarrolladores se centran en el código.</li>
+<li>Menos operaciones: no se gestionan servidores físicos ni parches de SO.</li>
+<li>Despliegue rápido: pipelines y despliegues automáticos.</li>
+<li>Escalado sencillo según demanda.</li>
+</ul>
+</section>
+
+
+<section class="card">
+<h2>Ejemplos de uso</h2>
+<ul>
+<li>Startups que quieren lanzar productos rápidamente.</li>
+<li>Aplicaciones web que requieren escalado automático.</li>
+<li>Equipos que prefieren centrarse en el negocio y no en la infraestructura.</li>
+</ul>
+</section>
+
+
+<section class="card">
+<h2>Plataformas conocidas</h2>
+<p class="lead">(Algunos ejemplos populares)</p>
+<ul>
+<li>Heroku</li>
+<li>Google App Engine</li>
+<li>Microsoft Azure App Service</li>
+<li>Render, Fly.io, y otros servicios similares</li>
+</ul>
+</section>
+
+
+<section class="card">
+<h2>¿Cuándo no usar PaaS?</h2>
+<p>Si necesitas control absoluto sobre la infraestructura, configuraciones muy específicas del kernel o componentes de red avanzados, un IaaS o una solución on-premise podrían ser más apropiadas.</p>
+</section>
+
+
+<section class="card">
+<h2>Mini ejemplo de despliegue</h2>
+<p>Un flujo típico sería:</p>
+<ol>
+<li>Escribir la aplicación (por ejemplo, Node.js o Python).</li>
+<li>Configurar <code>Procfile</code> o equivalente.</li>
+<li>Conectar repositorio y configurar CI/CD.</li>
+<li>Desplegar a la plataforma PaaS y monitorizar.</li>
+</ol>
+</section>
+
+
+</main>
+
+
+<footer>
+Página sencilla creada para explicar <strong>PaaS</strong>. ¿Quieres que añada un logo, más ejemplos o traduzca a inglés?
+</footer>
 </body>
 </html>
