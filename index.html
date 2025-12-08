@@ -6,12 +6,13 @@
     <title>DataPro Analytics | Análisis de Datos Empresarial</title>
     <style>
         :root {
-            --primary-color: #003366; /* Azul Oscuro Profesional */
-            --secondary-color: #1a75ff; /* Azul Brillante */
-            --light-color: #f4f4f9; /* Gris Claro/Blanco Sucio */
-            --dark-color: #333; /* Negro/Gris Oscuro */
+            --primary-color: #003366; /* Azul Profundo */
+            --secondary-color: #1a75ff; /* Azul Eléctrico */
+            --light-color: #ffffff; /* Blanco */
+            --light-background: #f4f4f9; /* Gris Claro para secciones */
+            --dark-color: #002244; /* Azul Aún más Oscuro para footer */
             --text-light: #fff;
-            --text-dark: #333;
+            --text-dark: #333; /* Texto estándar gris oscuro */
         }
 
         /* Reset Básico y Tipografía */
@@ -37,23 +38,31 @@
         h1, h2, h3 {
             margin-bottom: 15px;
             color: var(--primary-color);
+            font-weight: 600;
         }
 
+        /* --- Animación de Carga (Fade-in) --- */
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
         /* --- Encabezado y Navegación --- */
         header {
-            background-color: var(--primary-color);
-            color: var(--text-light);
-            padding: 20px 0;
+            background-color: var(--light-color); /* Fondo blanco limpio */
+            color: var(--text-dark);
+            padding: 15px 0;
             position: sticky;
             top: 0;
             z-index: 1000;
-            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            box-shadow: 0 1px 5px rgba(0, 0, 0, 0.1);
         }
 
         header .logo {
             font-size: 1.8em;
             font-weight: bold;
-            letter-spacing: 1px;
+            letter-spacing: 0.5px;
+            color: var(--primary-color);
         }
 
         nav ul {
@@ -68,14 +77,15 @@
         }
 
         nav ul li a {
-            color: var(--text-light);
+            color: var(--primary-color);
             text-decoration: none;
             font-weight: 500;
-            transition: color 0.3s;
+            transition: color 0.3s, border-bottom 0.3s;
         }
 
         nav ul li a:hover {
             color: var(--secondary-color);
+            border-bottom: 2px solid var(--secondary-color);
         }
 
         .header-content {
@@ -88,51 +98,76 @@
         .btn {
             display: inline-block;
             background-color: var(--secondary-color);
-            color: var(--text-light);
-            padding: 10px 20px;
+            color: var(--text-light); /* Texto blanco sobre azul eléctrico */
+            padding: 12px 25px;
             text-decoration: none;
-            border-radius: 5px;
-            transition: background-color 0.3s, transform 0.2s;
+            border-radius: 50px; 
+            transition: background-color 0.3s, transform 0.2s, box-shadow 0.3s;
             font-weight: bold;
+            box-shadow: 0 4px 6px rgba(26, 117, 255, 0.3);
         }
 
         .btn:hover {
             background-color: #005ce6;
-            transform: translateY(-2px);
+            transform: scale(1.05);
+            box-shadow: 0 6px 12px rgba(26, 117, 255, 0.5);
+        }
+        
+        .btn-secondary {
+            background-color: var(--primary-color);
+            color: var(--text-light);
+            box-shadow: 0 4px 6px rgba(0, 51, 102, 0.3);
+            margin-top: 30px;
         }
 
-        /* --- Sección Principal (Hero) --- */
+        .btn-secondary:hover {
+            background-color: #001a33;
+            transform: scale(1.05);
+            box-shadow: 0 6px 12px rgba(0, 51, 102, 0.5);
+        }
+
+
+        /* --- Sección Principal (Hero/Banner Mejorado) --- */
         #hero {
-            /* **IMPORTANTE**: Reemplazar 'ruta-a-tu-imagen-fondo.jpg' con la ruta de tu imagen local. */
-            background: linear-gradient(rgba(0, 51, 102, 0.8), rgba(0, 51, 102, 0.8)), 
-                        url('./ruta-a-tu-imagen-fondo.jpg') 
-                        no-repeat center center/cover;
+            /* Degradado de azules más sutil y elegante */
+            background: linear-gradient(135deg, var(--primary-color) 0%, #004d99 100%);
             color: var(--text-light);
-            padding: 100px 0;
+            padding: 120px 0;
             text-align: center;
         }
 
         #hero h1 {
-            font-size: 3.5em;
+            font-size: 4em;
             margin-bottom: 10px;
             color: var(--text-light);
+            font-weight: 900;
         }
 
         #hero p {
-            font-size: 1.5em;
-            margin-bottom: 30px;
+            font-size: 1.6em;
+            margin-bottom: 40px;
             font-weight: 300;
         }
+        
+        /* Aplicación de Fade-in */
+        #hero .container > * {
+            animation: fadeIn 1s ease-out forwards;
+        }
+
+        #hero h1 { animation-delay: 0.2s; }
+        #hero p { animation-delay: 0.4s; }
+        #hero .btn { animation-delay: 0.6s; }
+
 
         /* --- Secciones de Contenido --- */
         section {
-            padding: 60px 0;
+            padding: 80px 0;
         }
 
         .section-title {
             text-align: center;
-            margin-bottom: 40px;
-            font-size: 2.5em;
+            margin-bottom: 50px;
+            font-size: 2.8em;
             color: var(--primary-color);
         }
 
@@ -147,26 +182,32 @@
         .service-card {
             background: #fff;
             padding: 30px;
-            border-radius: 8px;
-            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
-            transition: transform 0.3s;
+            border-radius: 12px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+            transition: transform 0.3s, box-shadow 0.3s;
+            border-bottom: 5px solid var(--secondary-color);
         }
 
         .service-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 6px 15px rgba(0, 0, 0, 0.1);
+            transform: translateY(-8px); 
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1); 
         }
 
         .service-icon {
-            font-size: 3em; /* Icono grande */
-            color: var(--secondary-color); /* Color azul */
+            font-size: 3.5em; 
+            color: var(--secondary-color); 
             display: block;
             margin-bottom: 15px;
+            transition: transform 0.3s;
+        }
+        
+        .service-card:hover .service-icon {
+            transform: rotate(5deg) scale(1.1);
         }
 
         /* Sección Acerca de Nosotros */
         #acerca {
-            background-color: #fff;
+            background-color: var(--light-background);
         }
 
         #acerca .content {
@@ -200,6 +241,7 @@
             background-color: var(--primary-color);
             color: var(--text-light);
             text-align: center;
+            padding: 80px 0;
         }
 
         #contacto .section-title {
@@ -209,6 +251,26 @@
         #contacto p {
             font-size: 1.2em;
             margin-bottom: 30px;
+        }
+
+        /* Estilo del Formulario de Contacto */
+        #contacto form {
+            background: var(--light-color);
+            padding: 40px;
+            border-radius: 12px;
+            max-width: 500px;
+            margin: 0 auto;
+            color: var(--text-dark);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
+        }
+
+        #contacto form input, #contacto form textarea {
+            width: 100%; 
+            padding: 12px; 
+            margin-bottom: 15px; 
+            border: 1px solid #ddd; 
+            border-radius: 8px;
+            font-family: inherit;
         }
 
         /* --- Footer --- */
@@ -225,11 +287,12 @@
 
     <header>
         <div class="container header-content">
-            <div class="logo">DataPro Analytics</div>
+            <div class="logo">DataPro <span style="color: var(--secondary-color);">Analytics</span></div>
             <nav>
                 <ul>
                     <li><a href="#hero">Inicio</a></li>
                     <li><a href="#servicios">Servicios</a></li>
+                    <li><a href="ejemplos.html">Ejemplos</a></li>
                     <li><a href="#acerca">Nosotros</a></li>
                     <li><a href="#contacto">Contacto</a></li>
                 </ul>
@@ -239,15 +302,15 @@
 
     <section id="hero">
         <div class="container">
-            <h1>Convierte **Datos Crudos** en **Inteligencia Empresarial**</h1>
-            <p>Soluciones líderes en Machine Learning, Big Data y Visualización para impulsar tu crecimiento.</p>
-            <a href="#contacto" class="btn">Empezar mi Análisis</a>
+            <h1>**Data** que Mueve tu **Negocio**</h1>
+            <p>Transformamos la información en estrategias claras y resultados tangibles.</p>
+            <a href="ejemplos.html" class="btn">Ver Ejemplos de Dashboards</a>
         </div>
     </section>
 
     <section id="servicios">
         <div class="container">
-            <h2 class="section-title">Nuestros Servicios Clave</h2>
+            <h2 class="section-title">Nuestras Soluciones de Datos</h2>
             <div class="grid">
                 <div class="service-card">
                     <span class="service-icon">💾</span> 
@@ -264,6 +327,12 @@
                     <h3>Visualización de Datos (BI)</h3>
                     <p>Creación de Dashboards interactivos y reportes claros en plataformas como Power BI y Tableau.</p>
                 </div>
+            </div>
+            
+            <div style="text-align: center;">
+                <a href="ejemplos.html" class="btn btn-secondary">
+                    Ver Nuestro Portafolio de Casos
+                </a>
             </div>
         </div>
     </section>
@@ -296,13 +365,13 @@
 
     <section id="contacto">
         <div class="container">
-            <h2 class="section-title">¿Listo para Transformar tus Datos?</h2>
-            <p>Hablemos sobre tus desafíos. Solicita una consulta gratuita con nuestros expertos.</p>
-            <form action="#" method="POST" style="max-width: 500px; margin: 0 auto; background: #fff; padding: 30px; border-radius: 8px; color: var(--text-dark);">
-                <input type="text" placeholder="Tu Nombre" required style="width: 100%; padding: 10px; margin-bottom: 15px; border: 1px solid #ccc; border-radius: 5px;">
-                <input type="email" placeholder="Correo Electrónico Empresarial" required style="width: 100%; padding: 10px; margin-bottom: 15px; border: 1px solid #ccc; border-radius: 5px;">
-                <textarea placeholder="Cuéntanos sobre tu proyecto de datos..." rows="4" required style="width: 100%; padding: 10px; margin-bottom: 15px; border: 1px solid #ccc; border-radius: 5px;"></textarea>
-                <button type="submit" class="btn" style="background-color: var(--secondary-color); width: 100%; border: none; cursor: pointer;">Enviar Consulta</button>
+            <h2 class="section-title">¿Listo para Impulsar tu Negocio?</h2>
+            <p>Hablemos sobre tus desafíos. Solicita una consulta gratuita con nuestros expertos hoy mismo.</p>
+            <form action="#" method="POST">
+                <input type="text" placeholder="Tu Nombre Completo" required>
+                <input type="email" placeholder="Correo Electrónico Empresarial" required>
+                <textarea placeholder="Cuéntanos sobre tu proyecto de datos..." rows="4" required></textarea>
+                <button type="submit" class="btn" style="color: var(--text-light);">Enviar Consulta</button>
             </form>
         </div>
     </section>
