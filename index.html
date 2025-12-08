@@ -1,119 +1,317 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="es">
 <head>
-<meta charset="utf-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>Mi primer sitio Web con PaaS</title>
-<style>
-:root{--bg:#f7fafc;--card:#ffffff;--accent:#0b5fff;--muted:#6b7280}
-html,body{height:100%;margin:0;font-family:Inter, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;}
-body{background:linear-gradient(180deg,#eef2ff, var(--bg));padding:2rem;}
-.container{max-width:900px;background:var(--card);border-radius:12px;box-shadow:0 8px 30px rgba(15,23,42,0.08);padding:2rem 3rem;margin:1.5rem auto;}
-h1{margin:0;font-size:2.25rem;color:var(--accent);line-height:1.05;text-align:center;}
-h2{margin:.5rem 0 1.25rem;font-size:1.1rem;color:var(--accent);font-weight:700;}
-p, li{color:#111827;font-size:1rem;line-height:1.6;}
-ul, ol{padding-left:1.2rem;}
-footer{text-align:center;margin-top:1.5rem;color:var(--muted);font-size:0.9rem;}
-.badge{display:inline-block;background:#eef2ff;color:var(--accent);padding:.25rem .5rem;border-radius:999px;font-weight:600;margin:auto;margin-bottom:.75rem;}
-.card{background:var(--card);padding:1.5rem;margin-top:1rem;border-radius:10px;box-shadow:0 4px 18px rgba(15,23,42,0.05);}
-.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:1rem;margin-top:1rem;}
-</style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DataPro Analytics | Análisis de Datos Empresarial</title>
+    <style>
+        :root {
+            --primary-color: #003366; /* Azul Oscuro Profesional */
+            --secondary-color: #1a75ff; /* Azul Brillante */
+            --light-color: #f4f4f9; /* Gris Claro/Blanco Sucio */
+            --dark-color: #333; /* Negro/Gris Oscuro */
+            --text-light: #fff;
+            --text-dark: #333;
+        }
+
+        /* Reset Básico y Tipografía */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: var(--text-dark);
+            background-color: var(--light-color);
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: auto;
+            padding: 0 20px;
+        }
+
+        h1, h2, h3 {
+            margin-bottom: 15px;
+            color: var(--primary-color);
+        }
+
+        /* --- Encabezado y Navegación --- */
+        header {
+            background-color: var(--primary-color);
+            color: var(--text-light);
+            padding: 20px 0;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+
+        header .logo {
+            font-size: 1.8em;
+            font-weight: bold;
+            letter-spacing: 1px;
+        }
+
+        nav ul {
+            list-style: none;
+            display: flex;
+            justify-content: flex-end;
+            align-items: center;
+        }
+
+        nav ul li {
+            margin-left: 25px;
+        }
+
+        nav ul li a {
+            color: var(--text-light);
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+
+        nav ul li a:hover {
+            color: var(--secondary-color);
+        }
+
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        /* --- Botones --- */
+        .btn {
+            display: inline-block;
+            background-color: var(--secondary-color);
+            color: var(--text-light);
+            padding: 10px 20px;
+            text-decoration: none;
+            border-radius: 5px;
+            transition: background-color 0.3s, transform 0.2s;
+            font-weight: bold;
+        }
+
+        .btn:hover {
+            background-color: #005ce6;
+            transform: translateY(-2px);
+        }
+
+        /* --- Sección Principal (Hero) --- */
+        #hero {
+            /* **IMPORTANTE**: Reemplazar 'ruta-a-tu-imagen-fondo.jpg' con la ruta de tu imagen local. */
+            background: linear-gradient(rgba(0, 51, 102, 0.8), rgba(0, 51, 102, 0.8)), 
+                        url('./ruta-a-tu-imagen-fondo.jpg') 
+                        no-repeat center center/cover;
+            color: var(--text-light);
+            padding: 100px 0;
+            text-align: center;
+        }
+
+        #hero h1 {
+            font-size: 3.5em;
+            margin-bottom: 10px;
+            color: var(--text-light);
+        }
+
+        #hero p {
+            font-size: 1.5em;
+            margin-bottom: 30px;
+            font-weight: 300;
+        }
+
+        /* --- Secciones de Contenido --- */
+        section {
+            padding: 60px 0;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 40px;
+            font-size: 2.5em;
+            color: var(--primary-color);
+        }
+
+        /* Servicios: Diseño de Tarjetas y Estilo de Iconos UNICODE */
+        #servicios .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            text-align: center;
+        }
+
+        .service-card {
+            background: #fff;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+            transition: transform 0.3s;
+        }
+
+        .service-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 6px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .service-icon {
+            font-size: 3em; /* Icono grande */
+            color: var(--secondary-color); /* Color azul */
+            display: block;
+            margin-bottom: 15px;
+        }
+
+        /* Sección Acerca de Nosotros */
+        #acerca {
+            background-color: #fff;
+        }
+
+        #acerca .content {
+            display: flex;
+            align-items: center;
+            gap: 40px;
+        }
+        
+        @media (max-width: 768px) {
+            #acerca .content {
+                flex-direction: column;
+                text-align: center;
+            }
+            #acerca .image {
+                order: -1;
+            }
+        }
+
+        #acerca .text, #acerca .image {
+            flex: 1;
+        }
+
+        #acerca .image img {
+            width: 100%;
+            border-radius: 8px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        /* Sección de Contacto */
+        #contacto {
+            background-color: var(--primary-color);
+            color: var(--text-light);
+            text-align: center;
+        }
+
+        #contacto .section-title {
+            color: var(--text-light);
+        }
+
+        #contacto p {
+            font-size: 1.2em;
+            margin-bottom: 30px;
+        }
+
+        /* --- Footer --- */
+        footer {
+            background-color: var(--dark-color);
+            color: var(--text-light);
+            padding: 30px 0;
+            text-align: center;
+            font-size: 0.9em;
+        }
+    </style>
 </head>
 <body>
 
+    <header>
+        <div class="container header-content">
+            <div class="logo">DataPro Analytics</div>
+            <nav>
+                <ul>
+                    <li><a href="#hero">Inicio</a></li>
+                    <li><a href="#servicios">Servicios</a></li>
+                    <li><a href="#acerca">Nosotros</a></li>
+                    <li><a href="#contacto">Contacto</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
 
-<div class="container" style="text-align:center;">
-<div class="badge">PaaS</div>
-<h1>PaaS — Platform as a Service</h1>
-  <h2>Jeaqueline Rocio Felipez Gongora</h2>
-<p class="lead">Una explicación breve y clara sobre qué es PaaS y cuándo usarlo.</p>
-</div>
+    <section id="hero">
+        <div class="container">
+            <h1>Convierte **Datos Crudos** en **Inteligencia Empresarial**</h1>
+            <p>Soluciones líderes en Machine Learning, Big Data y Visualización para impulsar tu crecimiento.</p>
+            <a href="#contacto" class="btn">Empezar mi Análisis</a>
+        </div>
+    </section>
 
+    <section id="servicios">
+        <div class="container">
+            <h2 class="section-title">Nuestros Servicios Clave</h2>
+            <div class="grid">
+                <div class="service-card">
+                    <span class="service-icon">💾</span> 
+                    <h3>Big Data & Procesamiento</h3>
+                    <p>Diseñamos infraestructuras escalables para manejar volúmenes masivos de datos en tiempo real.</p>
+                </div>
+                <div class="service-card">
+                    <span class="service-icon">🧠</span>
+                    <h3>Modelos de Machine Learning</h3>
+                    <p>Desarrollo de modelos predictivos y prescriptivos para la toma de decisiones automatizada.</p>
+                </div>
+                <div class="service-card">
+                    <span class="service-icon">📈</span>
+                    <h3>Visualización de Datos (BI)</h3>
+                    <p>Creación de Dashboards interactivos y reportes claros en plataformas como Power BI y Tableau.</p>
+                </div>
+            </div>
+        </div>
+    </section>
 
-<main class="container">
-<section class="card">
-<h2>¿Qué es PaaS?</h2>
-<p>PaaS (Platform as a Service) es un modelo de computación en la nube que proporciona una plataforma completa —incluyendo infraestructura, sistema operativo, entorno de ejecución y herramientas— para desarrollar, desplegar y administrar aplicaciones sin preocuparse por la gestión del hardware o la configuración de bajo nivel.</p>
-</section>
+    <hr>
 
+    <section id="acerca">
+        <div class="container">
+            <h2 class="section-title">Impulsando la Estrategia con Datos</h2>
+            <div class="content">
+                <div class="text">
+                    <h3>¿Quiénes Somos?</h3>
+                    <p>Somos un equipo de científicos de datos y analistas con la misión de democratizar el acceso a la información estratégica. En DataPro Analytics, creemos que cada conjunto de datos guarda el potencial para una ventaja competitiva.</p>
+                    <ul>
+                        <li><span style="font-weight: bold;">✅ Claridad:</span> Transformamos la complejidad en insights accionables.</li>
+                        <li><span style="font-weight: bold;">✅ Precisión:</span> Aplicamos metodologías rigurosas y las últimas tecnologías.</li>
+                        <li><span style="font-weight: bold;">✅ Impacto:</span> Enfocados en resultados medibles y retorno de inversión.</li>
+                    </ul>
+                    <br>
+                    <a href="#contacto" class="btn">Conoce a Nuestro Equipo</a>
+                </div>
+                <div class="image">
+                    <img src="./ruta-a-tu-imagen-equipo.jpg" alt="Equipo de negocios analizando datos">
+                </div>
+            </div>
+        </div>
+    </section>
 
-<section class="card">
-<h2>Características principales</h2>
-<div class="grid">
-<div>
-<h3>Entorno gestionado</h3>
-<p>La plataforma se encarga del sistema operativo, servidores y escalado.</p>
-</div>
-<div>
-<h3>Herramientas integradas</h3>
-<p>IDE en la nube, integración continua, bases de datos y monitorización.</p>
-</div>
-<div>
-<h3>Escalabilidad</h3>
-<p>Permite escalar la aplicación vertical u horizontalmente con menos configuración manual.</p>
-</div>
-</div>
-</section>
+    <hr>
 
+    <section id="contacto">
+        <div class="container">
+            <h2 class="section-title">¿Listo para Transformar tus Datos?</h2>
+            <p>Hablemos sobre tus desafíos. Solicita una consulta gratuita con nuestros expertos.</p>
+            <form action="#" method="POST" style="max-width: 500px; margin: 0 auto; background: #fff; padding: 30px; border-radius: 8px; color: var(--text-dark);">
+                <input type="text" placeholder="Tu Nombre" required style="width: 100%; padding: 10px; margin-bottom: 15px; border: 1px solid #ccc; border-radius: 5px;">
+                <input type="email" placeholder="Correo Electrónico Empresarial" required style="width: 100%; padding: 10px; margin-bottom: 15px; border: 1px solid #ccc; border-radius: 5px;">
+                <textarea placeholder="Cuéntanos sobre tu proyecto de datos..." rows="4" required style="width: 100%; padding: 10px; margin-bottom: 15px; border: 1px solid #ccc; border-radius: 5px;"></textarea>
+                <button type="submit" class="btn" style="background-color: var(--secondary-color); width: 100%; border: none; cursor: pointer;">Enviar Consulta</button>
+            </form>
+        </div>
+    </section>
 
-<section class="card">
-<h2>Ventajas</h2>
-<ul>
-<li>Ahorro de tiempo: los desarrolladores se centran en el código.</li>
-<li>Menos operaciones: no se gestionan servidores físicos ni parches de SO.</li>
-<li>Despliegue rápido: pipelines y despliegues automáticos.</li>
-<li>Escalado sencillo según demanda.</li>
-</ul>
-</section>
-
-
-<section class="card">
-<h2>Ejemplos de uso</h2>
-<ul>
-<li>Startups que quieren lanzar productos rápidamente.</li>
-<li>Aplicaciones web que requieren escalado automático.</li>
-<li>Equipos que prefieren centrarse en el negocio y no en la infraestructura.</li>
-</ul>
-</section>
-
-
-<section class="card">
-<h2>Plataformas conocidas</h2>
-<p>(Algunos ejemplos populares)</p>
-<ul>
-<li>Heroku</li>
-<li>Google App Engine</li>
-<li>Microsoft Azure App Service</li>
-<li>Render, Fly.io, y otros servicios similares</li>
-</ul>
-</section>
-
-
-<section class="card">
-<h2>¿Cuándo no usar PaaS?</h2>
-<p>Si necesitas control absoluto sobre la infraestructura, configuraciones muy específicas del kernel o componentes de red avanzados, un IaaS o una solución on-premise podrían ser más apropiadas.</p>
-</section>
-
-
-<section class="card">
-<h2>Mini ejemplo de despliegue</h2>
-<p>Un flujo típico sería:</p>
-<ol>
-<li>Escribir la aplicación (por ejemplo, Node.js o Python).</li>
-<li>Configurar <code>Procfile</code> o equivalente.</li>
-<li>Conectar repositorio y configurar CI/CD.</li>
-<li>Desplegar a la plataforma PaaS y monitorizar.</li>
-</ol>
-</section>
-
-
-</main>
-
-
-<footer>
-Página sencilla creada para explicar <strong>PaaS</strong>.
-</footer>
-
+    <footer>
+        <div class="container">
+            <p>&copy; 2025 DataPro Analytics. Todos los derechos reservados. | <a href="#" style="color: var(--secondary-color);">Política de Privacidad</a></p>
+        </div>
+    </footer>
 
 </body>
 </html>
